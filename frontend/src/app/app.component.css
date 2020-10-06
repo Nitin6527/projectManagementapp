@@ -1,0 +1,13 @@
+.navbar{
+    margin-bottom: 20px;
+}
+.navbar-nav{
+    position: absolute;
+    right: 50px;
+}
+.navbar-trans {
+    background: transparent; 
+}
+.navbar-brand{
+    color: #9dc720;
+}

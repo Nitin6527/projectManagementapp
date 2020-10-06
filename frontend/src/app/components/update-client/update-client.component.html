@@ -1,0 +1,17 @@
+<div class="card">  
+        <div class="card-body">
+<form class="form-login" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="first-container" *ngFor="let person of Client">
+      <h1 class="h3 mb-3 font-weight-normal">Edit {{person.name}} Task</h1>
+      <label for="inputname" class="sr-only">Task Name</label>
+      <input type="text" id="inputname" name="task_name" class="form-control" placeholder="Task Name" required ngModel>
+      <label for="inputbody" class="sr-only">Task Body</label>
+      <textarea type="text" id="inputPassword" name="task_body" class="form-control" placeholder="Task Body" required ngModel></textarea>
+      <label style="margin-top:5%" for="inputdate" >Deadline</label>
+      <input type="date" id="inputdate" name="deadLine" class="form-control" placeholder="Task Date" required ngModel>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!f.valid">Submit</button>
+    </div>
+</form>
+</div>
+
+</div>
