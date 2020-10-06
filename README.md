@@ -4,4 +4,4 @@ step1: npm install\
 step2: nodemon server.js\
 ##frontend\
 step1:npm intal\
-step2: ng serve\
+step2: ng serve
