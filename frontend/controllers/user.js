@@ -101,54 +101,54 @@ exports.login_Manager = (req,res,next)=>{
 
 exports.signup = (req,res,next)=>{
   console.log(req.body)
-  if(req.body.role==='manager'){
+  if(req.body.role==='manager'||req.body.role==='client'){
     Manager.find({},(err,found)=>{
-       if(found.length>0&&!err){
+       if(found.length>1&&!err){
          res.json("Only one Manager is Allowed!")
-       }
-    })
-  }else{
-    User.find({email:req.body.email},(err,found)=>{
-      if(err){
-        res.json(err);
-      }
-      else if(found.length>1&&!err){
-        res.json("User Already exist")
-      }
-        else{
-          bcrypt.genSalt(saltRounds, function (err, salt)
-          {
-            if (err) throw err;
-            else 
-            {
-              bcrypt.hash(req.body.password, salt, function(err, hash)
+       }else{
+        User.find({email:req.body.email},(err,found)=>{
+          if(err){
+            res.json(err);
+          }
+          else if(found.length>1&&!err){
+            res.json("User Already exist")
+          }
+            else{
+              bcrypt.genSalt(saltRounds, function (err, salt)
               {
-                if(err) throw err;
-                else
+                if (err) throw err;
+                else 
                 {
-                var newuser = new User(
-                {
-                  name: req.body.name,
-                  email: req.body.email,
-                  role: req.body.role,
-                  password: hash,
-                });
-                
-            newuser.save()
-            .then(res=>{
-                console.log(res)
-            })
-            .catch(err=>{
-                throw err;
-            })
-           }
-          })
-         }
-         })
-  
-        }
+                  bcrypt.hash(req.body.password, salt, function(err, hash)
+                  {
+                    if(err) throw err;
+                    else
+                    {
+                    var newuser = new User(
+                    {
+                      name: req.body.name,
+                      email: req.body.email,
+                      role: req.body.role,
+                      password: hash,
+                    });
+                    
+                newuser.save()
+                .then(result=>{
+                    res.json(result)
+                })
+                .catch(err=>{
+                    throw err;
+                })
+               }
+              })
+             }
+             })
+      
+            }
+        })
+    
+      }
     })
-
   }
   
 };
