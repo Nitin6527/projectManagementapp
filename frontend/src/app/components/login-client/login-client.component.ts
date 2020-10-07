@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./login-client.component.css']
 })
 export class LoginClientComponent implements OnInit {
-  client:any;
+  client:any=[];
   constructor(private http: HttpClient,private router: Router) { }
 
   ngOnInit() {
@@ -24,6 +24,9 @@ export class LoginClientComponent implements OnInit {
     console.log(this.client._id)
     if(this.client._id){
       this.router.navigate(['/client',this.client._id])
+    }
+    if(this.client[0]._id){
+      this.router.navigate(['/client',this.client[0]._id])
     }
     })
     

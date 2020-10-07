@@ -19,7 +19,7 @@ export class LoginManagerComponent implements OnInit {
     form.value.role="manager";
     console.log(form.value);
     if(this.http.post('http://localhost:3000/api/v2/login_Manager', form.value).subscribe(data=>{
-     
+     console.log(data);
     })){
       this.router.navigate(['/manager']);
     }
