@@ -14,7 +14,6 @@ export class ClientComponent implements OnInit {
   private clientId;
   sub;
   Client:any=[];
-  private NotDelivered=false;
   constructor(private route:ActivatedRoute,private http: HttpClient,private router: Router) { }
 
   ngOnInit() {
@@ -33,7 +32,7 @@ export class ClientComponent implements OnInit {
       console.log(data);
       
     });
-    this.router.navigate(['/']);
+    window.location.reload();
   }
   onKey(event: any) { // without type info
     this.clientId = event.target.value ;
@@ -50,11 +49,7 @@ export class ClientComponent implements OnInit {
     console.log(this.clientId)
     this.http.get(`http://localhost:3000/api/v2/client/task/${this.clientId}`).subscribe(data=>{
       console.log(data);
-      this.Client=data;
-      if(this.Client.tasks.task_assigned_date==this.Client.tasks.task_deadLine){
-        this.NotDelivered=true;
-      }
-     
+      this.Client=data;     
     })
   }
 }

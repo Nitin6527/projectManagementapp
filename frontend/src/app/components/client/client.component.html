@@ -23,18 +23,18 @@
               <div>
                 <p>Task Assigned Date : {{Client.tasks.task_assigned_date}}</p>
                 <p>Task Deadline : {{Client.tasks.task_deadLine}}</p>
-                <p style="background-color: tomato;display: inline-block;color:aliceblue" *ngIf="this.NotDelivered" >Non-delivered</p>
+                <p style="background-color: tomato;display: inline-block;color:aliceblue" *ngIf="person.tasks.task_assigned_date >= person.tasks.task_deadLine" >Non-delivered</p>
               </div>
              <label class="form-group" for="">your Progress</label>
               <div class="progress " *ngIf="Client.progress">
-                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50"  aria-valuemin="0" aria-valuemax="50">{{Client.progress}}%</div>
+                <div class="progress-bar" role="progressbar"  [ngStyle]="{'width.%':Client.progress }" aria-valuenow="50"  aria-valuemin="0" aria-valuemax="50">{{Client.progress}}%</div>
               </div>
             <form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
               <div class="first-container">
                 <label for="inputprogress" class="sr-only">Enter your progress</label>
-                <input type="number" id="inputprogress" name="progress" class="form-control" placeholder="Enter your progress in %" required ngModel>
+                <input type="number" id="inputprogress" name="progress" class="form-control" placeholder="Enter your progress in %"  ngModel>
                 <label for="inputnote" class="sr-only">Note</label>
-                <textarea type="text" id="inputnote" name="note" class="form-control" placeholder="note" required ngModel></textarea>
+                <textarea type="text" id="inputnote" name="note" class="form-control" placeholder="note"  ngModel></textarea>
                <button class="btn btn-lg btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
               </div>
           </form>

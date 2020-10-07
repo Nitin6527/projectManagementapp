@@ -17,7 +17,7 @@ export class ManagerComponent implements OnInit {
   Manager:any;
   newID:any;
   private id:String;
-  private NotDelivered=false;
+  private NotDelivered;
   constructor(private http: HttpClient,private router: Router) { }
 
   ngOnInit() {
@@ -46,15 +46,11 @@ export class ManagerComponent implements OnInit {
     this.http.get('http://localhost:3000/api/v2/manager/task')
     .subscribe(posts=>{
       this.Employee = posts;
-      if(this.Employee.tasks.task_assigned_date==this.Employee.tasks.task_deadLine){
-        this.NotDelivered=true;
-      }
-     
     })
     this.http.get('http://localhost:3000/api/v2/manager/manager_Info')
     .subscribe(posts=>{
       this.Manager=posts;
-      
     })
+    
   }
 }

@@ -10,17 +10,19 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./login-manager.component.css']
 })
 export class LoginManagerComponent implements OnInit {
-
+  Manager:any
   constructor( private http: HttpClient,private router: Router) { }
 
   ngOnInit() {
   }
   onSubmit(form: NgForm){
     form.value.role="manager";
-    console.log(form.value);
-    if(this.http.post('http://localhost:3000/api/v2/login_Manager', form.value).subscribe(data=>{
+    this.http.post('http://localhost:3000/api/v2/login_Manager', form.value).subscribe(data=>{
      console.log(data);
-    })){
+     this.Manager=data;
+    })
+    console.log(this.Manager)
+    if(this.Manager){
       this.router.navigate(['/manager']);
     }
   }

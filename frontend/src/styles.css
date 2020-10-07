@@ -14,13 +14,13 @@ h1,h2,h3,h4,h5,h6{
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
-    border: 2px solid #9dc720;
-    background: linear-gradient(45deg, #fff 50%, #9dc720 50%);
+    border: 2px solid #749414;
+    background: linear-gradient(45deg, rgb(159, 185, 9) 50%, #92c00a 50%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
   
-    color: #fff; /*For IE*/
+    color: rgba(48, 45, 45, 0.6); /*For IE*/
   }
   
   .btn:after {
@@ -30,7 +30,7 @@ h1,h2,h3,h4,h5,h6{
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(45deg, #9dc720 50%, transparent 50%);
+    background: linear-gradient(45deg, #749414 50%, transparent 50%);
     z-index: -1;
   }
   
@@ -45,8 +45,8 @@ h1,h2,h3,h4,h5,h6{
   .btn:hover:after {
     background-position: 0;
     font-size: 1.1em;
-    border: 2px solid #9dc720;
+    border: 2px solid #749414;
   
-    color: #9dc720; /*For IE*/
+    color: #749414; /*For IE*/
   }
   

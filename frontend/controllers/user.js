@@ -70,22 +70,29 @@ exports.login_Manager = (req,res,next)=>{
               bcrypt.compare(req.body.password,user.password, function (err, isMatch)
               {
                 if(isMatch&&!err){
-              
-                   
-                   var newManager = Manager({
-                    name: user.name,
-                    email: user.email,
-                    role: user.role,
-                   })
-                
-                      newManager.save()
-                      .then(data=>{
-                       res.json(data)
-                      })
-                      .catch(err=>{
-                          res.json(err);
-                      })
-                 
+                Manager.find({email:user.email},(err,result)=>{
+                    console.log(result.length)
+                  if(result.length==1&&!err){
+                    res.json(result);
+
+                  }else if(!err&&result.length==0){
+                    var newManager = Manager({
+                      name: user.name,
+                      email: user.email,
+                      role: user.role,
+                     })
+                        newManager.save()
+                        .then(data=>{
+                         res.json(data)
+                        })
+                        .catch(err=>{
+                            res.json(err);
+                        })
+                  }
+                  else{
+                    res.json(err);
+                  }
+                }); 
                 }
             });
             }

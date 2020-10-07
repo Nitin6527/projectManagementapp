@@ -25,14 +25,14 @@
                  <div style="text-align: right;">
                   <p>Task Assigned Date : {{person.tasks.task_assigned_date}}</p>
                   <p>Deadline: {{person.tasks.task_deadLine}}</p>
-                  <p style="background-color: tomato;display: inline-block;color:aliceblue" *ngIf="this.NotDelivered" >Non-delivered</p>
+                  <p *ngIf="person.tasks.task_assigned_date >= person.tasks.task_deadLine" style="background-color: tomato;display: inline-block;color:aliceblue">Non-delivered</p>
                  </div>
                <div class="container justify-content-center">
                  <div class="row">
                    <div class="col-lg-6"></div>
                    <div class="col-lg-6">
                     <div class="progress ">
-                      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="50">{{person.progress}}%</div>
+                      <div class="progress-bar" role="progressbar"  [ngStyle]="{'width.%':person.progress }" aria-valuenow="50" aria-valuemin="0" aria-valuemax="50">{{person.progress}}%</div>
                     </div>
                   </div>
                  </div>
