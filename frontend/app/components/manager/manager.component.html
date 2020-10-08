@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3">
+        <div *ngFor="let person of Manager;" class="card">
+          <div class="card-body">
+            <h4>{{person.name}}</h4>
+            <div class="container" style="text-align: left;">
+              <p>Email : {{person.email}}</p>
+              <p>Role : {{person.role}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div *ngFor="let emp of Employee" class="card">
+          <div class="card-body">
+            <div class="container-fluid">
+              <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <h5>{{person.name}}</h5>
+              <p>Email : {{person.email}}</p>  
+              <div class="container" style="text-align:left;" >
+                <h6>{{person.tasks.task_name}}</h6>
+                <ul>{{person.tasks.task_body}}</ul>
+              </div>
+                 <div style="text-align: right;">
+                  <p>Task Assigned Date : {{person.tasks.task_assigned_date}}</p>
+                  <p>Deadline: {{person.tasks.task_deadLine}}</p>
+                  <p *ngIf="person.tasks.task_assigned_date >= person.tasks.task_deadLine" style="background-color: tomato;display: inline-block;color:aliceblue">Non-delivered</p>
+                 </div>
+               <div class="container justify-content-center">
+                 <div class="row">
+                   <div class="col-lg-6"></div>
+                   <div class="col-lg-6">
+                    <div class="progress ">
+                      <div class="progress-bar" role="progressbar"  [ngStyle]="{'width.%':person.progress }" aria-valuenow="50" aria-valuemin="0" aria-valuemax="50">{{person.progress}}%</div>
+                    </div>
+                  </div>
+                 </div>
+               </div>  
+              <input type="text" style="display: none;"   name="id" ngModel>
+              <button class="btn btn-sm btn-primary" type="submit" (click)="this.id=person._id" (keyup)="onKey($event)" >Assign Task</button>
+              </form>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
