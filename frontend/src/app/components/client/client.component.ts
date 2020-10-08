@@ -19,12 +19,12 @@ export class ClientComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.paramMap.subscribe(params=>{
       this.clientId=params.get('id');
-      
       this.fetchPosts();
     })
     
   }
   onSubmit(form: NgForm){
+   
     form.value.id=this.clientId;
     form.value.role="client";
     console.log(form.value);
@@ -45,6 +45,7 @@ export class ClientComponent implements OnInit {
     this.http.get(`http://localhost:3000/api/v2/client/task/${this.clientId}`).subscribe(data=>{
       console.log(data);
       this.Client=data;
+    
       console.log(this.Client.name)     
     })
   }

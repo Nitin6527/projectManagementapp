@@ -22,8 +22,9 @@ export class ManagerComponent implements OnInit {
 
   ngOnInit() {
     this.fetchPosts();
+    
   }
-
+  
   onKey(event: any) { // without type info
     this.id = event.target.value;
     this.newID=this.id;
@@ -39,6 +40,7 @@ export class ManagerComponent implements OnInit {
     if(this.id){
       this.router.navigate(['/updateClient',this.id])
     }
+    
   }
 
   private fetchPosts(){
@@ -46,6 +48,7 @@ export class ManagerComponent implements OnInit {
     this.http.get('http://localhost:3000/api/v2/manager/task')
     .subscribe(posts=>{
       this.Employee = posts;
+      console.log("hekki")
     })
     this.http.get('http://localhost:3000/api/v2/manager/manager_Info')
     .subscribe(posts=>{

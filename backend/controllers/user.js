@@ -35,6 +35,12 @@ exports.login_Client = (req,res,next)=>{
                     name: user.name,
                     email: user.email,
                     role: user.role,
+                    progress: 0,
+                    notes: "Not assigned!",
+                    tasks:{
+                      task_name:"Not assigned!",
+                      task_body:"Not assigned!"
+                    }
                    })
                       newClient.save()
                       .then(data=>{
