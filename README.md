@@ -1,7 +1,7 @@
 # projectManagementapp
-## Backend\
+## Backend
 step1: npm install\
 step2: nodemon server.js\
-## frontend\
+## frontend
 step1:npm install\
 step2: ng serve
