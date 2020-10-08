@@ -2,7 +2,7 @@ const Client = require('../Models/client');
 const Manager = require('../Models/manager'); 
 
 exports.getTask = (req,res,next)=>{
-    console.log("Hello")
+    
   if(req.params.id){
       Client.find({_id:req.params.id},(err,found)=>{
           if(found&&!err){

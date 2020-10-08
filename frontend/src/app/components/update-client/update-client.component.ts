@@ -24,9 +24,7 @@ export class UpdateClientComponent implements OnInit {
   }
   
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
+ 
   onSubmit(form: NgForm){
     
     form.value.id=this.clientId;

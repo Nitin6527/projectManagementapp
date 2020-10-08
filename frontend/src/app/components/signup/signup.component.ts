@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-
+     
     if(form.value.role==="client"){
       if(this.http.post('http://localhost:3000/api/v2/signup', form.value).subscribe(data=>{
         console.log(data)
@@ -29,14 +29,14 @@ export class SignupComponent implements OnInit {
       })){
         this.router.navigate(['/login_client'])
       }
-    }else{
+    }else {
       if(this.http.post('http://localhost:3000/api/v2/signup', form.value).subscribe(data=>{
         console.log(data);
         if(data==="User Already exist"||data==="Only one Manager is Allowed!"){
-          
+          window.location.reload();
         }
         })){
-        // this.router.navigate(['/login_manager']);
+        this.router.navigate(['/login_manager']);
         }
     }
     

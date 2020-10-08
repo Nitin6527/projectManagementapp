@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ClientComponent implements OnInit {
   private clientId;
   sub;
-  Client:any=[];
+  private Client:any;
   constructor(private route:ActivatedRoute,private http: HttpClient,private router: Router) { }
 
   ngOnInit() {
@@ -34,22 +34,18 @@ export class ClientComponent implements OnInit {
     });
     window.location.reload();
   }
-  onKey(event: any) { // without type info
-    this.clientId = event.target.value ;
-  }
-
+ 
   onfetchData(){
     this.fetchPosts();
   }
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  } 
+ 
 
   private fetchPosts(){
     console.log(this.clientId)
     this.http.get(`http://localhost:3000/api/v2/client/task/${this.clientId}`).subscribe(data=>{
       console.log(data);
-      this.Client=data;     
+      this.Client=data;
+      console.log(this.Client.name)     
     })
   }
 }
